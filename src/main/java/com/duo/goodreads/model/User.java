@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -23,5 +26,25 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Authority authority;
+
+    @ManyToMany
+    @JoinTable(
+            //name = "users_meals",
+            joinColumns = @JoinColumn(name = "username"),
+            inverseJoinColumns = @JoinColumn(name = "id_meal"))
+    Set<Meal> meals = new HashSet<>();
+
+    @Override
+    public boolean equals(Object o){
+        if (!(o instanceof User))
+            return false;
+        User user = (User) o;
+        return Objects.equals(this.username, user.getUsername());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.username);
+    }
 
 }
