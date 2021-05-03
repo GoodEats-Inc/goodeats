@@ -10,18 +10,18 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-public class Meal {
+public class Food {
     @Id
-    @Column(name = "ID_MEAL")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqMeal")
-    @SequenceGenerator(name = "seqMeal", sequenceName = "SEQ_MEAL", allocationSize = 1)
+    @Column(name = "ID_FOOD")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqFood")
+    @SequenceGenerator(name = "seqFood", sequenceName = "SEQ_FOOD", allocationSize = 1)
     Long id;
 
     private String name;
 
     private String imgUrl;
 
-    @ManyToMany(mappedBy = "meals")
+    @ManyToMany(mappedBy = "foods")
     private Set<User> users = new HashSet<>();
 
 }

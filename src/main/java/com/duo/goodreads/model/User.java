@@ -29,10 +29,10 @@ public class User {
 
     @ManyToMany
     @JoinTable(
-            //name = "users_meals",
+            //name = "users_foods",
             joinColumns = @JoinColumn(name = "username"),
-            inverseJoinColumns = @JoinColumn(name = "id_meal"))
-    Set<Meal> meals = new HashSet<>();
+            inverseJoinColumns = @JoinColumn(name = "id_food"))
+    Set<Food> foods = new HashSet<>();
 
     @Override
     public boolean equals(Object o){
