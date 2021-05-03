@@ -22,7 +22,7 @@ public class FoodRatingKey implements Serializable {
 	@Column
 	private String username;
 	
-	@Column(name="ID_MEAL")
+	@Column(name="id_food")
 	private Long id;
 
 	public String getUsername() { return username; }

@@ -29,8 +29,8 @@ public class FoodRating {
 	
 	@ManyToOne
 	@MapsId("id")
-	@JoinColumn(name="ID_MEAL")
-	private Meal meal;
+	@JoinColumn(name="id_food")
+	private Food food;
 	
 	int rating;
 
@@ -42,9 +42,9 @@ public class FoodRating {
 
 	public void setUser(User user) { this.user = Objects.requireNonNull(user); }
 
-	public Meal getMeal() { return meal; }
+	public Food getMeal() { return food; }
 
-	public void setMeal(Meal meal) { this.meal = Objects.requireNonNull(meal); }
+	public void setMeal(Food food) { this.food = Objects.requireNonNull(food); }
 
 	public int getRating() { return rating; }
 

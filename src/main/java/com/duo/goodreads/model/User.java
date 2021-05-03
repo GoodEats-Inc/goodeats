@@ -26,8 +26,8 @@ public class User {
     @JoinTable(
             //name = "users_meals",
             joinColumns = @JoinColumn(name = "username"),
-            inverseJoinColumns = @JoinColumn(name = "id_meal"))
-    Set<Meal> meals = new HashSet<>();
+            inverseJoinColumns = @JoinColumn(name = "id_food"))
+    Set<Food> foods = new HashSet<>();
 
     @OneToMany(mappedBy="user")
     private Set<FoodRating> ratings;
@@ -61,9 +61,9 @@ public class User {
 
 	public void setAuthority(Authority authority) { this.authority = Objects.requireNonNull(authority); }
 
-	public Set<Meal> getMeals() { return meals; }
+	public Set<Food> getFoods() { return foods; }
 
-	public void setMeals(Set<Meal> meals) { this.meals = Objects.requireNonNull(meals); }
+	public void setFoods(Set<Food> foods) { this.foods = Objects.requireNonNull(foods); }
 
 	public Set<FoodRating> getRatings() { return ratings; }
 
