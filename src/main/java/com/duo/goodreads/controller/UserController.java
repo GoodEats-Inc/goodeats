@@ -22,7 +22,7 @@ public class UserController {
     public String showSignUpForm(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "web/sign-up";
+        return "html/sign-up";
     }
 
     @GetMapping("/controllo")
@@ -33,7 +33,7 @@ public class UserController {
     @PostMapping("/adduser")
     public String addUser(@ModelAttribute("user") User user, BindingResult result) {
         if (result.hasErrors()) {
-            return "web/sign-up";
+            return "html/sign-up";
         }
 
         user.setPassword(webSecurityConfig.passwordEncoder().encode(user.getPassword()));

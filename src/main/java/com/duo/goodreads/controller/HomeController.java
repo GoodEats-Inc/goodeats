@@ -1,10 +1,7 @@
 package com.duo.goodreads.controller;
 
-import com.duo.goodreads.repository.FoodRepository;
 import com.duo.goodreads.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,25 +10,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 	private @Autowired
 	FoodService foodService;
+	
 	@RequestMapping("/")
 	public String home(Model model) {
 		model.addAttribute("foods", foodService.findAll());
-
-		return "web/home";
-	}
-
-	@RequestMapping("/css/styles.css")
-	public String css() {
-		return "web/css/styles.css";
+		return "html/home";
 	}
 
 	@RequestMapping("/my_list")
 	public String myList() {
-		return "web/my_list";
+		return "html/my_list";
 	}
 
 	@RequestMapping("/top_rated")
 	public String topRated() {
-		return "web/top_rated";
+		return "html/top_rated";
 	}
 }
