@@ -22,14 +22,18 @@ public class UserController {
     public String showSignUpForm(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "html/sign-up";
+        return "web/sign-up";
     }
 
+    @GetMapping("/controllo")
+    public String controllo() {
+        return "home";
+    }
 
     @PostMapping("/adduser")
     public String addUser(@ModelAttribute("user") User user, BindingResult result) {
         if (result.hasErrors()) {
-            return "html/sign-up";
+            return "web/sign-up";
         }
 
         user.setPassword(webSecurityConfig.passwordEncoder().encode(user.getPassword()));

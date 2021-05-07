@@ -1,0 +1,17 @@
+.name-food{
+    text-align: center;
+}
+
+.navbar-brand{
+    font-size: 2.0rem;
+    font-weight: bold;
+}
+
+.gallery-element{
+    margin-bottom: 2%;
+}
+
+#home-gallery{
+    text-align: center;
+    margin:2%
+}

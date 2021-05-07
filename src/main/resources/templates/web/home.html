@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+  <head>
+      <meta charset="UTF-8">
+      <title>Home</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ee37df8681.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/styles.css" th:href="@{/css/styles.css}" >
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #10DE88;">
+      <div class="container">
+        <a class="navbar-brand logo" href="#">
+          Good<span style="color: #1b1e21">Eats</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbartarget" aria-controls="navbartarget" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbartarget">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link home-button" href="/">
+                <i class="fas fa-home"></i> Home
+                <span class="sr-only">
+                  (current)
+                </span>
+              </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link top-rated-button" href="/top_rated">
+                <i class="fas fa-percentage"></i> Top Rated
+              </a>
+            </li>
+            <li sec:authorize="isAnonymous()" class="nav-item">
+              <a class="nav-link my-list-button disabled" href="#" style="color:#b3ff99">
+                <i class="fas fa-list"></i> My list
+              </a>
+            </li>
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+              <a class="nav-link my-list-button active" href="/my_list">
+                <i class="fas fa-list"></i> My list
+              </a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav ml-auto group-login navbar-right">
+            <li class="nav-item active">
+              <form class="form-inline my-2 my-md-0">
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+              </form>
+            </li>
+            <li sec:authorize="!isAuthenticated()" class="nav-item active">
+              <a class="nav-link login-button active" href="/login">
+                <i class="fas fa-sign-in-alt"></i> Sign In
+              </a>
+            </li>
+            <li sec:authorize="!isAuthenticated()" class="nav-item active">
+              <a class="nav-link signup-button active" href="/signup">
+                <i class="fas fa-user-plus"></i> Sign Up
+              </a>
+            </li>
+            <li sec:authorize="isAuthenticated()" class="nav-item active">
+              <a class="nav-link logout-button active" href="/logout">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <section id="home-gallery" class="row">
+      <div th:each="food : ${foods}" class="col-lg-4 col-md-6 gallery-element">
+        <img th:src="${food.getImgUrl()}" class="img-fluid rounded" alt="Responsive image">
+        <h3 class="name-food" th:text="${food.getName()}"></h3>
+      </div>
+
+    </section>
+
+
+  </body>
+</html>
