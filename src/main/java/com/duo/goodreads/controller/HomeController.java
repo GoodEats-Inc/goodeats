@@ -18,12 +18,12 @@ public class HomeController {
 	}
 
 	@RequestMapping("/my_list")
-	public String myList() {
+	public String myList(Model model) {
 		return "html/my_list";
 	}
 
 	@RequestMapping("/top_rated")
-	public String topRated() {
+	public String topRated(Model model) {
 		return "html/top_rated";
 	}
 }
