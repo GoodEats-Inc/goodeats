@@ -9,8 +9,10 @@ import java.util.List;
 
 @Service
 public class FoodService {
+	
     @Autowired
     FoodRepository foodRepository;
+    
     public List<Food> findAll(){
         return foodRepository.findAll();
     }

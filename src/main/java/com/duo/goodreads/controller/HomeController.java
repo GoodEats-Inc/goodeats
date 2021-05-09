@@ -2,6 +2,7 @@ package com.duo.goodreads.controller;
 
 import com.duo.goodreads.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,10 @@ public class HomeController {
 	@RequestMapping("/")
 	public String home(Model model) {
 		model.addAttribute("foods", foodService.findAll());
+		
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		if(!username.equals("anonymousUser"))
+			model.addAttribute("username", username);
 		return "html/home";
 	}
 
