@@ -68,4 +68,10 @@ public class User {
 	public Set<FoodRating> getRatings() { return ratings; }
 
 	public void setRatings(Set<FoodRating> ratings) { this.ratings = Objects.requireNonNull(ratings); }
+
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", password=" + password + ", enabled=" + enabled + ", authority="
+				+ authority + ", foods=" + foods + ", ratings=" + ratings + "]";
+	}
 }

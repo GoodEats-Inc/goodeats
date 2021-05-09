@@ -42,9 +42,9 @@ public class FoodRating {
 
 	public void setUser(User user) { this.user = Objects.requireNonNull(user); }
 
-	public Food getMeal() { return food; }
+	public Food getFood() { return food; }
 
-	public void setMeal(Food food) { this.food = Objects.requireNonNull(food); }
+	public void setFood(Food food) { this.food = Objects.requireNonNull(food); }
 
 	public int getRating() { return rating; }
 

@@ -1,13 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>My List</title>
+
+    <link rel="icon" th:href="@{/img/hamburger.ico}">
 </head>
 <body>
   <h1>
     UNDER CONSTRUCTION
   </h1>
   <h3 style="color: #117a8b">LIST FOOD</h3>
+
+
+  <table>
+    <tr>
+      <th>Food</th>
+      <th>Rating</th>
+    </tr>
+    <tr th:each="mapElement : ${foodRatingsMap}">
+      <td th:text="${mapElement.key.name}"></td>
+      <td th:text="${mapElement.value}"></td>
+    </tr>
+  </table>
 </body>
 </html>
